@@ -46,20 +46,20 @@ VDDR_GetErrorString(UINT nErr)
          case VDD_TYPE_VDI:
             pszErr = VDIR_GetErrorString(nErr);
             break;
-         case VDD_TYPE_VHD:
-            pszErr = VHDR_GetErrorString(nErr);
-            break;
-         case VDD_TYPE_VMDK:
-         case VDD_TYPE_RAW:
-         case VDD_TYPE_PART_RAW:
-            pszErr = VMDKR_GetErrorString(nErr);
-            break;
-         case VDD_TYPE_PARALLELS:
-            pszErr = HDDR_GetErrorString(nErr);
-            break;
-         case VDD_TYPE_COW:
-            pszErr = COW_GetErrorString(nErr);
-            break;
+         // case VDD_TYPE_VHD:
+         //    pszErr = VHDR_GetErrorString(nErr);
+         //    break;
+         // case VDD_TYPE_VMDK:
+         // case VDD_TYPE_RAW:
+         // case VDD_TYPE_PART_RAW:
+         //    pszErr = VMDKR_GetErrorString(nErr);
+         //    break;
+         // case VDD_TYPE_PARALLELS:
+         //    pszErr = HDDR_GetErrorString(nErr);
+         //    break;
+         // case VDD_TYPE_COW:
+         //    pszErr = COW_GetErrorString(nErr);
+         //    break;
 		 default:
             ;
       }
@@ -83,18 +83,19 @@ PUBLIC HVDDR
 VDDR_Open(CPFN fn, UINT iChain)
 {
    HVDDR pObj=NULL;
-   if (Mem_Compare(fn,"\\\\.\\",4)==0) { // if UNC name for physical drive
-      pObj = VMDKR_OpenRaw(fn, iChain);
-   } else if (Filename_IsExtension(fn,"vdi")) {
+   // if (Mem_Compare(fn,"\\\\.\\",4)==0) { // if UNC name for physical drive
+      // pObj = VMDKR_OpenRaw(fn, iChain);
+   // } else if (Filename_IsExtension(fn,"vdi")) {
+   if (Filename_IsExtension(fn,"vdi")) {
       pObj = VDIR_Open(fn, iChain);
-   } else if (Filename_IsExtension(fn,"vhd")) {
-      pObj = VHDR_Open(fn, iChain);
-   } else if (Filename_IsExtension(fn,"vmdk")) {
-      pObj = VMDKR_Open(fn, iChain);
-   } else if (Filename_IsExtension(fn,"raw") || Filename_IsExtension(fn,"img")) {
-      pObj = VMDKR_OpenRaw(fn, iChain);
-   } else if (Filename_IsExtension(fn,"hdd")) {
-      pObj = HDDR_Open(fn, iChain);
+   // } else if (Filename_IsExtension(fn,"vhd")) {
+   //    pObj = VHDR_Open(fn, iChain);
+   // } else if (Filename_IsExtension(fn,"vmdk")) {
+   //    pObj = VMDKR_Open(fn, iChain);
+   // } else if (Filename_IsExtension(fn,"raw") || Filename_IsExtension(fn,"img")) {
+   //    pObj = VMDKR_OpenRaw(fn, iChain);
+   // } else if (Filename_IsExtension(fn,"hdd")) {
+   //    pObj = HDDR_Open(fn, iChain);
    }
    return pObj;
 }
@@ -117,10 +118,10 @@ VDDR_QuickGetUUID(CPFN fn, S_UUID *UUID)
 {
    if (Filename_IsExtension(fn,"vdi")) {
       return VDIR_QuickGetUUID(fn, UUID);
-   } else if (Filename_IsExtension(fn,"vmdk")) {
-      return VMDKR_QuickGetUUID(fn, UUID);
-   } else if (Filename_IsExtension(fn,"vhd")) {
-      return VHDR_QuickGetUUID(fn, UUID);
+   // } else if (Filename_IsExtension(fn,"vmdk")) {
+   //    return VMDKR_QuickGetUUID(fn, UUID);
+   // } else if (Filename_IsExtension(fn,"vhd")) {
+   //    return VHDR_QuickGetUUID(fn, UUID);
    }
    return FALSE;
 }
