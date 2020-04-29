@@ -46,19 +46,19 @@ void   File_Close(FILE f);
 UINT   File_RdBin(FILE f, PVOID Buf, UINT Size);
 UINT   File_WrBin(FILE f, PVOID Buf, UINT Size);
 
-void   File_Seek(FILE f, HUGE pos);
+void   File_Seek(FILE f, HUGE_ pos);
 
-UINT   File_GetPos(FILE f, HUGE *pos);
+UINT   File_GetPos(FILE f, HUGE_ *pos);
 // Return value is low dword of pos. Full 64bit pos is returned in pos argument.
 // pos argument may be NULL if you know the position will be less than 4GB.
 
-UINT   File_Size(FILE f, HUGE *size);
+UINT   File_Size(FILE f, HUGE_ *size);
 // Return value is low dword of file size. Full 64bit size is returned in size argument.
 // size argument may be NULL if you know the file size is less than 4GB.
 
 void   File_Erase(CPFN fn);
-BOOL   File_Exists(CPFN fn);
-BOOL   File_Rename(CPFN oldname, CPFN name);
+bool   File_Exists(CPFN fn);
+bool   File_Rename(CPFN oldname, CPFN name);
 
 UINT   File_GetDate(FILE f);         // for legacy reasons, returns date in DOS format.
 void   File_SetDate(FILE f, UINT d); // for legacy reasons, expects date in DOS format.

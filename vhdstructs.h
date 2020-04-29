@@ -46,7 +46,7 @@ typedef struct {
    UINT u32PlatformDataSpace;
    UINT u32PlatformDataLength;
    UINT u32Reserved;
-   HUGE u64PlatformDataOffset;
+   HUGE_ u64PlatformDataOffset;
 } VHD_PARENT_LOCATOR;
 
 // VHD footer format. Remember that all structures in the VHD use big endian byte order.
@@ -56,13 +56,13 @@ typedef struct {
    BYTE cookie[8];        // The string "conectix"
    UINT u32Features;      // flag bits. See VHD_FOOTFLAG_xxx defs. RESERVED bit must always be 1.
    UINT u32FmtVer;        // VHD format version.
-   HUGE u64DataOffset;    // Absolute byte offset to "next structure", whatever that means in a footer!
+   HUGE_ u64DataOffset;    // Absolute byte offset to "next structure", whatever that means in a footer!
    UINT u32TimeStamp;     // Despite what the docs say, this has to be a modification time stamp. Secs since 12:00:00am on Jan 1st, 2000 (UTC/GMT).
    BYTE u32CreatorApp[4]; // This is a 4 byte string. Eg. "vpc "==Virtual PC, "vs  "==Virtual Server.
    UINT u32CreatorVer;    // Version number of app that created this VHD. VPC 2007 sets this to 0x50003, VirtServ sets 0x10000.
    BYTE u32CreatorOS[4];  // Another 4-byte string. "wi2k"==Windows. "mac "==Mac.
-   HUGE u64OriginalSize;  // Max size of VHD when it was created (virtual drive size, not current allocation size).
-   HUGE u64CurrentSize;   // Max size of VHD now. Matches OriginalSize unless VHD has been expanded.
+   HUGE_ u64OriginalSize;  // Max size of VHD when it was created (virtual drive size, not current allocation size).
+   HUGE_ u64CurrentSize;   // Max size of VHD now. Matches OriginalSize unless VHD has been expanded.
    VHD_DISK_GEOMETRY geometry;
    UINT u32DiskType;      // See VHD_TYPE_xxx defs.
    UINT u32Checksum;      // Ones complement of sum of all bytes in the footer, excluding the checksum field.
@@ -77,8 +77,8 @@ typedef struct {
 // that rule is ever broken).
 typedef struct {
    BYTE cookie[8];          // The string "cxsparse"
-   HUGE u64DataOffset;      // Offset to image data. Field not used, should be set to (HUGE)(-1).
-   HUGE u64TableOffset;     // Absolute byte offset of block table.
+   HUGE_ u64DataOffset;      // Offset to image data. Field not used, should be set to (HUGE)(-1).
+   HUGE_ u64TableOffset;     // Absolute byte offset of block table.
    UINT u32HeaderVer;       // Header version, VPC writes 0x00010000
    UINT u32BlockCount;      // Number of entries in block map.
    UINT u32BlockSize;       // The size in bytes of one block. Typical value for VPC is 2MB.

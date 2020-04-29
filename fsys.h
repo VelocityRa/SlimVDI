@@ -19,7 +19,7 @@
 
 typedef CLASS(FSYS) *HFSYS;
 
-HFSYS FSys_OpenVolume(UINT PartCode, HVDDR hVDI, HUGE iLBA, HUGE cLBA, UINT cSectorSize);
+HFSYS FSys_OpenVolume(UINT PartCode, HVDDR hVDI, HUGE_ iLBA, HUGE_ cLBA, UINT cSectorSize);
 /* Attempts to open a volume (partition). The function returns a non-NULL handle if
  * the volume contains a filesystem which the application recognizes.
  *

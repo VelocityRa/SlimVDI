@@ -44,15 +44,15 @@ HVDDR HDDR_Open(CPFN fn, UINT iChain);
  */
 
 UINT HDDR_GetDriveType(HVDDR pThis); // returns VDD_TYPE_VDI
-BOOL HDDR_GetDriveSize(HVDDR pThis, HUGE *drive_size);
+bool HDDR_GetDriveSize(HVDDR pThis, HUGE_ *drive_size);
 UINT HDDR_GetDriveBlockCount(HVDDR pThis, UINT SPBshift);
 UINT HDDR_AllocatedBlocks(HVDDR pThis, UINT SPBshift);
-UINT HDDR_BlockStatus(HVDDR pThis, HUGE LBA_start, HUGE LBA_end);
-BOOL HDDR_GetDriveUUID(HVDDR pThis, S_UUID *drvuuid);
-BOOL HDDR_IsSnapshot(HVDDR pThis);
+UINT HDDR_BlockStatus(HVDDR pThis, HUGE_ LBA_start, HUGE_ LBA_end);
+bool HDDR_GetDriveUUID(HVDDR pThis, S_UUID *drvuuid);
+bool HDDR_IsSnapshot(HVDDR pThis);
 /* These functions return various stats for the source HDD */
 
-BOOL HDDR_GetHeader(HVDDR pThis, HDD_HEADER *hddh);
+bool HDDR_GetHeader(HVDDR pThis, HDD_HEADER *hddh);
 /* -- Note not part of the VDDR class.
  * This function provides direct access to the private header structure from the source HDD. This is
  * intended to be used for diagnostic features, such as by the ShowHeader module.
@@ -64,7 +64,7 @@ int  HDDR_ReadPage(HVDDR pThis, void *buffer, UINT iPage, UINT SPBshift);
  * in SECTORS, expressed as a shift amount.
  */
 
-int  HDDR_ReadSectors(HVDDR pThis, void *buffer, HUGE LBA, UINT nSectors);
+int  HDDR_ReadSectors(HVDDR pThis, void *buffer, HUGE_ LBA, UINT nSectors);
 /* Reads zero or more sectors from the drive using absolute LBA addressing ("absolute" meaning that
  * sector numbers are relative to the drive, not relative to a partition).
  * This function also returns one of the VDDR_RSLT_xxxx codes.

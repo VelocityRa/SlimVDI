@@ -11,12 +11,12 @@
 
 #include "fsys.h"
 
-BOOL Extx_IsLinuxVolume(HVDDR hVDI, HUGE iLBA);
+bool Extx_IsLinuxVolume(HVDDR hVDI, HUGE_ iLBA);
 /* Does quick check to see if an extx partition starts at the given LBA.
  * Returns TRUE if so.
  */
 
-HFSYS Extx_OpenVolume(HVDDR hVDI, HUGE iLBA, HUGE cLBA, UINT cSectorSize);
+HFSYS Extx_OpenVolume(HVDDR hVDI, HUGE_ iLBA, HUGE_ cLBA, UINT cSectorSize);
 /* Attempts to open an extX volume (partition). The function returns a non-NULL handle if
  * the volume was successfully recognized as an extX volume.
  *

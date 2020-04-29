@@ -14,10 +14,10 @@
 #include "djtypes.h"
 
 int  Env_sprintf(PSTR szDest, CPSTR s, ...);
-BOOL Env_GetDiskFreeSpace(CPFN szPath, HUGE *freebytes);
-BOOL Env_GetDriveSectors(HANDLE hDrive, UINT *DriveSectors);
+bool Env_GetDiskFreeSpace(CPFN szPath, HUGE_ *freebytes);
+bool Env_GetDriveSectors(HANDLE hDrive, UINT *DriveSectors);
 
-// BOOL Env_Error(PSTR szErr);
+// bool Env_Error(PSTR szErr);
 // Displays error message, always returns FALSE.
 
 UI32 Env_AskYN(PSTR szMsg, PSTR szCaption);
@@ -25,7 +25,7 @@ UI32 Env_AskYNC(PSTR szMsg, PSTR szCaption);
 // Yes/No? and Yes/No/Cancel message boxes.
 // Returns 0=NO, 1=YES, 2=Cancel (latter only if cancel is allowed).
 
-BOOL Env_BrowseFiles(HANDLE hWndParent, PSTR fnDflt, BOOL bInputFile, PSTR pszTemplate);
+bool Env_BrowseFiles(HANDLE hWndParent, PSTR fnDflt, bool bInputFile, PSTR pszTemplate);
 // Open/Save file dialog box.
 
 // Command line processing
@@ -63,8 +63,8 @@ void  Env_GenerateCloneName(PFN pfnClone, CPFN pfnSource);
 PVOID Env_LoadBinData(PSTR szResource);
 void  Env_DoubleToString(PSTR S, double X, UINT D);
 UINT  Env_GetTempFileName(PSTR path, PSTR pszPrefix, UINT uUnique, PSTR pszOutputFilename);
-BOOL  Env_DetectWine(void);
-BOOL  Env_InitComAPI(BOOL bInit);
+bool  Env_DetectWine(void);
+bool  Env_InitComAPI(bool bInit);
 int   Env_FormatUUID(PSTR pszUUID, S_UUID *pUUID);
 
 #endif

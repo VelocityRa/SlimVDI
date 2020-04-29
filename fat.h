@@ -11,12 +11,12 @@
 
 #include "fsys.h"
 
-BOOL FAT_IsFATVolume(HVDDR hVDI, HUGE iLBA);
+bool FAT_IsFATVolume(HVDDR hVDI, HUGE_ iLBA);
 /* Does quick check to find out if a FAT partition starts at the given LBA.
  * Returns TRUE if so.
  */
 
-HFSYS FAT_OpenVolume(HVDDR hVDI, HUGE iLBA, HUGE cLBA, UINT cSectorSize);
+HFSYS FAT_OpenVolume(HVDDR hVDI, HUGE_ iLBA, HUGE_ cLBA, UINT cSectorSize);
 /* Attempts to open an FAT volume (partition). The function returns a non-NULL handle if
  * the volume was successfully recognized as an FAT volume.
  *

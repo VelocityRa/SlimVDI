@@ -22,7 +22,7 @@ void  Filename_SplitPath(CPFN path, PFN head, PFN tail);
  * can be NULL if you don't need that result. Yes, both can be NULL, but
  * that would be rather pointless!
  */
- 
+
 void  Filename_SplitTail(CPFN path, PFN tail);
 /* Legacy function, equivalent to calling SplitPath(path,NULL,tail);
  */
@@ -38,7 +38,7 @@ void  Filename_AddExtension(PFN fn, CPFN ext);
 void  Filename_GetExtension(CPFN fn, PFN ext);
 void  Filename_RemoveExtension(PFN s);
 void  Filename_ChangeExtension(PFN s, CPFN ext);
-BOOL  Filename_IsExtension(CPFN s, CPFN ext);
+bool  Filename_IsExtension(CPFN s, CPFN ext);
 
 int   Filename_Length(CPFN fn);
 int   Filename_Copy(PFN fnDest, CPFN fnSrc, int MaxLen); // result is the number of FNCHARS written to fnDest, INCLUDING the NUL terminator.

@@ -35,7 +35,9 @@ typedef UI08 *PUI08;
 typedef const UI08 *CPUI08;
 
 // 8 bit type, signed
-typedef signed char CHAR;
+#ifndef VOID // winnt.h defines this
+typedef char CHAR;
+#endif
 typedef CHAR SI08;
 typedef CHAR *PCHAR;
 typedef const CHAR *CPCHAR;
@@ -69,7 +71,7 @@ typedef const UI64 *CPUI64;
 typedef long long SI64;
 typedef SI64 *PSI64;
 typedef const SI64 *CPSI64;
-typedef SI64 HUGE;
+typedef SI64 HUGE_;
 typedef SI64 *PHUGE;
 typedef const SI64 *CPHUGE;
 
@@ -78,7 +80,7 @@ typedef const SI64 *CPHUGE;
 #if UNICODE_FILENAMES
 typedef unsigned short FNCHAR;
 #else
-typedef unsigned char FNCHAR;
+typedef char FNCHAR;
 #endif
 typedef FNCHAR *PFN;
 typedef const FNCHAR *CPFN;
@@ -95,7 +97,7 @@ typedef const FNCHAR *CPFN;
  */
 #define LO32(h) ((UI32)(h))
 #define HI32(h) ((UI32)((h)>>32))
-#define MAKEHUGE(lo,hi) ((lo)+(((HUGE)(hi))<<32))
+#define MAKEHUGE(lo,hi) ((lo)+(((HUGE_)(hi))<<32))
 
 #define hugeop_shl(dest, src, c) dest = ((src)<<(c))
 #define hugeop_shr(dest, src, c) dest = ((src)>>(c))
@@ -131,23 +133,23 @@ typedef BYTE *PBYTE;
 
 typedef CHAR *PSTR;
 
-typedef UI32 BOOL;
-typedef BOOL *PBOOL;
+// typedef UI32 bool;
+// typedef bool *PBOOL;
 
 #define TRUE  1
 #define FALSE 0
 
-#define NULL  ((CPVOID)0)
+// #define NULL  ((CPVOID)0)
 
 typedef UI32 UINT;
 typedef UI16 WORD;
-typedef UI32 DWORD;
-typedef UI16 WCHAR;
+// typedef UI32 DWORD;
+// typedef UI16 WCHAR;
 
 typedef UI32 *PUINT;
 typedef UI16 *PWORD;
-typedef UI32 *PDWORD;
-typedef UI16 *PWCHAR;
+// typedef UI32 *PDWORD;
+typedef wchar_t *PWCHAR;
 
 #define MAKEWORD(lo,hi) ((WORD)((lo)+(((WORD)(hi))<<8)))
 #define MAKELONG(lo,hi) ((SI32)((lo)+(((SI32)(hi))<<16)))
@@ -155,13 +157,13 @@ typedef UI16 *PWCHAR;
 #endif
 
 typedef const void  *CPVOID;
-typedef const BYTE  *CPBYTE;
-typedef const BOOL  *CPBOOL;
-typedef const CHAR  *CPSTR;
-typedef const WCHAR *CPWCHAR;
+typedef const unsigned char*CPBYTE;
+typedef const bool  *CPBOOL;
+typedef const char  *CPSTR;
+typedef const wchar_t *CPWCHAR;
 
 #ifndef WINVER
-typedef CPVOID HANDLE;
+typedef void* HANDLE;
 #define INVALID_HANDLE_VALUE ((HANDLE)(PSI32)-1)
 #endif
 

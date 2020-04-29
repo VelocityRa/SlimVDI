@@ -56,20 +56,20 @@ HVDDR VDIR_Open(CPFN fn, UINT iChain);
  * by the header.
  */
 
-BOOL VDIR_QuickGetUUID(CPFN fn, S_UUID *UUID);
+bool VDIR_QuickGetUUID(CPFN fn, S_UUID *UUID);
 
 UINT VDIR_GetDriveType(HVDDR pThis); // returns VDD_TYPE_VDI
-BOOL VDIR_GetDriveSize(HVDDR pThis, HUGE *drive_size);
+bool VDIR_GetDriveSize(HVDDR pThis, HUGE_ *drive_size);
 UINT VDIR_GetDriveBlockCount(HVDDR pThis, UINT SPBshift);
 UINT VDIR_AllocatedBlocks(HVDDR pThis, UINT SPBshift);
-UINT VDIR_BlockStatus(HVDDR pThis, HUGE LBA_start, HUGE LBA_end);
-BOOL VDIR_GetDriveUUID(HVDDR pThis, S_UUID *drvuuid);
-BOOL VDIR_GetDriveUUIDs(HVDDR pThis, S_UUID *uuid, S_UUID *modifyUUID);
-BOOL VDIR_GetParentUUIDs(HVDDR pThis, S_UUID *parentUUID, S_UUID *parentModifyUUID);
-BOOL VDIR_IsSnapshot(HVDDR pThis);
+UINT VDIR_BlockStatus(HVDDR pThis, HUGE_ LBA_start, HUGE_ LBA_end);
+bool VDIR_GetDriveUUID(HVDDR pThis, S_UUID *drvuuid);
+bool VDIR_GetDriveUUIDs(HVDDR pThis, S_UUID *uuid, S_UUID *modifyUUID);
+bool VDIR_GetParentUUIDs(HVDDR pThis, S_UUID *parentUUID, S_UUID *parentModifyUUID);
+bool VDIR_IsSnapshot(HVDDR pThis);
 /* These functions return various stats for the source VDI */
 
-BOOL VDIR_GetHeader(HVDDR pThis, VDI_PREHEADER *vdiph, VDI_HEADER *vdih);
+bool VDIR_GetHeader(HVDDR pThis, VDI_PREHEADER *vdiph, VDI_HEADER *vdih);
 /* -- Note not part of the VDDR class.
  * This function provides direct access to the private pre-header or header structures from
  * the source VDI. This is intended to be used for diagnostic features, such as by the ShowHeader module.
@@ -85,7 +85,7 @@ int  VDIR_ReadPage(HVDDR pThis, void *buffer, UINT iPage, UINT SPBshift);
  * in SECTORS, expressed as a shift amount.
  */
 
-int  VDIR_ReadSectors(HVDDR pThis, void *buffer, HUGE LBA, UINT nSectors);
+int  VDIR_ReadSectors(HVDDR pThis, void *buffer, HUGE_ LBA, UINT nSectors);
 /* Reads zero or more sectors from the drive using absolute LBA addressing ("absolute" meaning that
  * sector numbers are relative to the drive, not relative to a partition).
  * This function also returns one of the VDDR_RSLT_xxxx codes.
@@ -96,7 +96,7 @@ HVDDR VDIR_Close(HVDDR pThis);
  * when the file was opened.
  */
 
-BOOL VDIR_IsInheritedPage(HVDDR pThis, UINT iPage);
+bool VDIR_IsInheritedPage(HVDDR pThis, UINT iPage);
 
 /*----------------------------------------------------------------------*/
 

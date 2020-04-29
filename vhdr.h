@@ -44,15 +44,15 @@ HVDDR VHDR_Open(CPFN fn, UINT iChain);
  */
 
 UINT VHDR_GetDriveType(HVDDR pThis); // returns VDD_TYPE_VHD
-BOOL VHDR_GetDriveSize(HVDDR pThis, HUGE *drive_size);
+bool VHDR_GetDriveSize(HVDDR pThis, HUGE_ *drive_size);
 UINT VHDR_GetDriveBlockCount(HVDDR pThis, UINT SPBshift);
 UINT VHDR_AllocatedBlocks(HVDDR pThis, UINT SPBshift);
-UINT VHDR_BlockStatus(HVDDR pThis, HUGE LBA_start, HUGE LBA_end);
-BOOL VHDR_GetDriveUUID(HVDDR pThis, S_UUID *drvuuid);
-BOOL VHDR_IsSnapshot(HVDDR pThis);
+UINT VHDR_BlockStatus(HVDDR pThis, HUGE_ LBA_start, HUGE_ LBA_end);
+bool VHDR_GetDriveUUID(HVDDR pThis, S_UUID *drvuuid);
+bool VHDR_IsSnapshot(HVDDR pThis);
 /* Return one of several drive metrics. */
 
-BOOL VHDR_GetHeader(HVDDR pThis, VHD_FOOTER *vhdf, VHD_DYN_HEADER *vhdh);
+bool VHDR_GetHeader(HVDDR pThis, VHD_FOOTER *vhdf, VHD_DYN_HEADER *vhdh);
 /* -- Note this function is not part of the VDDR class.
  * This function provides direct access to the private footer/header structures from the source VHD.
  * This is intended to be used for diagnostic features, such as by the ShowHeader module.
@@ -68,7 +68,7 @@ int  VHDR_ReadPage(HVDDR pThis, void *buffer, UINT iPage, UINT SPBshift);
  * in SECTORS, expressed as a shift amount.
  */
 
-int  VHDR_ReadSectors(HVDDR pThis, void *buffer, HUGE LBA, UINT nSectors);
+int  VHDR_ReadSectors(HVDDR pThis, void *buffer, HUGE_ LBA, UINT nSectors);
 /* Reads zero or more sectors from the drive using absolute LBA addressing ("absolute meaning that
  * sector numbers are relative to the drive, not relative to a partition).
  * The function also returns VHDR_RSLT_xxxx codes as listed above.
@@ -79,7 +79,7 @@ HVDDR VHDR_Close(HVDDR pThis);
  * when the file was opened.
  */
 
-BOOL VHDR_QuickGetUUID(CPFN fn, S_UUID *UUID);
+bool VHDR_QuickGetUUID(CPFN fn, S_UUID *UUID);
 /* Allows the image UUID to be extracted without fully opening the VHD, i.e. without
  * resolving the snapshot chain.
  */

@@ -63,7 +63,7 @@ typedef struct {          // header proper.
 // UINT offset_Image;     // not present in old header.
    VDIDISKGEOMETRY LegacyGeometry;
 // UINT dwDummy;          // not present in old header.
-   HUGE DiskSize;         // Maximum size in bytes of virtual disk.
+   HUGE_ DiskSize;         // Maximum size in bytes of virtual disk.
    UINT BlockSize;        // Size of an image block. Typically 1M (1024^2) bytes.
 // UINT cbBlockExtra;     // not present in old header.
    UINT nBlocks;          // Number of blocks == number of entries in blocks array.
@@ -84,7 +84,7 @@ typedef struct {          // header proper.
    UINT offset_Image;     // Offset in bytes from beginning of VDI file to disk image (should be sector aligned).
    VDIDISKGEOMETRY LegacyGeometry;
    UINT dwDummy;          // No longer used.
-   HUGE DiskSize;         // Maximum size in bytes of virtual disk.
+   HUGE_ DiskSize;         // Maximum size in bytes of virtual disk.
    UINT BlockSize;        // Size of an image block. Typically 1M (1024^2) bytes.
    UINT cbBlockExtra;     // Size of additional service information of every data block. Prepended before block data. May be 0. Should be a power of 2 and sector-aligned for optimization reasons.
    UINT nBlocks;          // Number of blocks == number of entries in blocks array.

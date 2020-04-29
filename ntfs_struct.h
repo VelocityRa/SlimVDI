@@ -19,15 +19,15 @@ typedef struct {
    WORD NumberOfHeads;
    UINT MediaType;
    UINT SectorsPerClusterShift; // not in actual boot sector
-   HUGE SectorsInVolume;
-   HUGE LCN_MFT;
-   HUGE LCN_MFTMirr;
+   HUGE_ SectorsInVolume;
+   HUGE_ LCN_MFT;
+   HUGE_ LCN_MFTMirr;
    UINT BytesPerMFTRec;
    UINT BytesPerIndexRec;
-   HUGE VolumeSerialNumber;
-   HUGE BootSectorLBA; // not in actual boot sector
-   HUGE LastSectorLBA; // not in actual boot sector == BootSectorLBA + SectorsInVolume
-   HUGE TruePartitionSectors; // not in actual boot sector (SectorsInVolume is rounded down to a multiple of cluster size)
+   HUGE_ VolumeSerialNumber;
+   HUGE_ BootSectorLBA; // not in actual boot sector
+   HUGE_ LastSectorLBA; // not in actual boot sector == BootSectorLBA + SectorsInVolume
+   HUGE_ TruePartitionSectors; // not in actual boot sector (SectorsInVolume is rounded down to a multiple of cluster size)
 } NTFS_BOOT_SECTOR;
 
 #define NTFS_SIG_FILE 0x454C4946
@@ -54,14 +54,14 @@ typedef struct { // format of file records in the MFT. This is usually followed 
    UINT signature;       // 0x454C4946 == "FILE".
    WORD UpdateSeqOffset; // offset to update sequence from start of file record (see note below on update sequences)
    WORD UpdateSeqLength; // length of update sequence field in WORDs.
-   HUGE LogFileSeqNum;   // $LogFile sequence number (LSN)
+   HUGE_ LogFileSeqNum;   // $LogFile sequence number (LSN)
    WORD SeqNum;          // Sequence number.
    WORD HardLinkCount;
    WORD FirstAttrOffset;
    WORD Flags;           // see MFT_FLAG_xxx defines.
    UINT FileRecSizeReal;
    UINT FileRecSizeAlloc;
-   HUGE BaseFileRecRef;
+   HUGE_ BaseFileRecRef;
    WORD idNextAttr;
    WORD wAlign;          // align to UINT boundary (XP)
    UINT MFTRecNo;        // MFT record number (XP)
@@ -108,14 +108,14 @@ typedef struct {      // generic attribute structure
       // BYTE Attrib[AttrLen];
       } res;
       struct { // non-resident attributes (see description of runlists below)
-         HUGE StartVCN;
-         HUGE LastVCN;
+         HUGE_ StartVCN;
+         HUGE_ LastVCN;
          WORD DataRunOffset; // Offset from attribute record start to the Runs[] array. Apparantly this is always aligned on quad boundary.
          WORD CompressionUnitSize;
          UINT padding;
-         HUGE AttrSizeAlloc; // This is the attribute size rounded up to a cluster boundary.
-         HUGE AttrSizeReal;
-         HUGE InitDataSize;
+         HUGE_ AttrSizeAlloc; // This is the attribute size rounded up to a cluster boundary.
+         HUGE_ AttrSizeReal;
+         HUGE_ InitDataSize;
       // WORD AttrName[NameLength];  // actually variable length.
       // WORD Runs[];  // This must be on a UINT boundary.
       } nonres;
@@ -167,13 +167,13 @@ typedef struct {      // generic attribute structure
 //
 
 typedef struct { // format of MFT $FILE_NAME attribute
-   HUGE ParentFolder;
-   HUGE CreateTime;
-   HUGE ModifyTime;
-   HUGE MFTChangeTime;
-   HUGE LastAccessTime;
-   HUGE FileSizeAlloc;
-   HUGE FileSizeReal;
+   HUGE_ ParentFolder;
+   HUGE_ CreateTime;
+   HUGE_ ModifyTime;
+   HUGE_ MFTChangeTime;
+   HUGE_ LastAccessTime;
+   HUGE_ FileSizeAlloc;
+   HUGE_ FileSizeReal;
    UINT Flags;
    UINT ReparseStuff;
    BYTE FileNameLen; // Filename length in characters (not bytes).

@@ -118,9 +118,9 @@ typedef struct { // official header for a VMDK extent (512 bytes).
    UINT descriptorSizeHi;
    UINT numGTEsPerGT;
 
-   HUGE rgdOffset;
-   HUGE gdOffset;
-   HUGE overHead;
+   HUGE_ rgdOffset;
+   HUGE_ gdOffset;
+   HUGE_ overHead;
    BYTE bUncleanShutdown;
    char singleEndLineChar;
    char nonEndLineChar;

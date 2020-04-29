@@ -39,7 +39,7 @@ HMEMFILE MemFile.Open(HANDLE hMem, UINT objLenBytes);
  * to.
  *
 
-HMEMFILE MemFile.OpenRead(HANDLE hMem, UINT objLenBytes, BOOL bAssignOwnership);
+HMEMFILE MemFile.OpenRead(HANDLE hMem, UINT objLenBytes, bool bAssignOwnership);
  * "Opens" an existing global memory object as a memfile in read-only mode.
  * This version of the Open() function does not copy the global memory
  * object. Writes are not allowed, hence the object will never grow in size.
@@ -103,7 +103,7 @@ int MemFile.Size(HMEMFILE h);
  * the latter can be moved by a seek).
  *
 
-BOOL MemFile.EOF(HMEMFILE h);
+bool MemFile.EOF(HMEMFILE h);
  * Returns TRUE if the r/w pointer is currently at or beyond EOF.
  *
 
@@ -134,7 +134,7 @@ void MemFile.Close(HMEMFILE h);
 typedef struct {
    HMEMFILE (*Create)(UINT initialAllocBytes);
    HMEMFILE (*Open)(HANDLE hMem, UINT objLenBytes);
-   HMEMFILE (*OpenRead)(HANDLE hMem, UINT objLenBytes, BOOL bAssignOwnership);
+   HMEMFILE (*OpenRead)(HANDLE hMem, UINT objLenBytes, bool bAssignOwnership);
    int      (*RdBin)(HMEMFILE h, void *pData, int len);
    int      (*WrBin)(HMEMFILE h, const void *pData, int len);
    int      (*DwordAlign)(HMEMFILE h);
@@ -142,7 +142,7 @@ typedef struct {
    int      (*GetPos)(HMEMFILE h);
    PVOID    (*GetPtr)(HMEMFILE h, int pos);
    int      (*Size)(HMEMFILE h);
-   BOOL     (*EOF)(HMEMFILE h);
+   bool     (*EOF)(HMEMFILE h);
    PVOID    (*Extract)(HMEMFILE h, int *lenBytes);
    HANDLE   (*Copy)(HMEMFILE h, UINT gMemFlags);
    void     (*Close)(HMEMFILE h);

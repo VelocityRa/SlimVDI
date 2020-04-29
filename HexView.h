@@ -78,7 +78,7 @@
 // of the buffer (LINEDOWN).
 //
 
-BOOL HexView_RegisterClass(HINSTANCE hInst);
+bool HexView_RegisterClass(HINSTANCE hInst);
 
 #endif
 

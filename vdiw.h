@@ -59,29 +59,29 @@ HVDIW VDIW_Create(CPFN fn, UINT BlockSize, UINT nBlocks, UINT nBlocksUsed);
  *
  */
 
-BOOL VDIW_SetDriveUUID(HANDLE hVDI, S_UUID *drvuuid);
+bool VDIW_SetDriveUUID(HANDLE hVDI, S_UUID *drvuuid);
 /* Assigns a specific UUID to the drive. Calling this function is optional, but if you
  * call it then you must do so prior to writing the first page/block. Returns TRUE
  * on success, check GetLastError() if it returns FALSE.
  */
 
-BOOL VDIW_SetDriveUUIDs(HANDLE hVDI, S_UUID *uuid, S_UUID *modifyUUID);
-BOOL VDIW_SetParentUUIDs(HANDLE hVDI, S_UUID *parentUUID, S_UUID *parentModifyUUID);
+bool VDIW_SetDriveUUIDs(HANDLE hVDI, S_UUID *uuid, S_UUID *modifyUUID);
+bool VDIW_SetParentUUIDs(HANDLE hVDI, S_UUID *parentUUID, S_UUID *parentModifyUUID);
 
-BOOL VDIW_SetFileSize(HVDIW hVDI, UINT nBlocks);
+bool VDIW_SetFileSize(HVDIW hVDI, UINT nBlocks);
 /* This function causes the output file to be immediately extended to its expected final
  * size. This hopefully eliminates the cluster allocation overhead while writing the
  * VDI.
  */
 
-BOOL VDIW_FixMBR(HVDIW hVDI, BYTE *MBR);
+bool VDIW_FixMBR(HVDIW hVDI, BYTE *MBR);
 /* The virtual drive geometry changes if you enlarge a virtual disk which was previously
  * less than ~8GB, and this messes up the partition CHS-start and CHS-end fields in the
  * MBR. This function can be called to fix those errors. In the future we could perhaps
  * also fix other MBR problems.
  */
 
-BOOL VDIW_WritePage(HVDIW hVDI, void *buffer, UINT iPage, BOOL bAllZero);
+bool VDIW_WritePage(HVDIW hVDI, void *buffer, UINT iPage, bool bAllZero);
 /* Writes one page (block) to the destination VDI. If this is the first page write then
  * this also causes an implied write of the header structures. Returns TRUE on success,
  * call GetLastError() if the return value is FALSE.

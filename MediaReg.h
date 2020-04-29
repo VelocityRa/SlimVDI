@@ -27,7 +27,7 @@ void MediaReg_Discard(void);
 /* Discard (reset) the current media registry, if any.
  */
 
-BOOL MediaReg_ScanFolder(CPFN pfn);
+bool MediaReg_ScanFolder(CPFN pfn);
 /* Given a filename, I scan all the filenames in the folder which includes that file,
  * looking for virtual disk files. If found I extract their UUID and add them to an
  * internal media registry. If the folder name is "Snapshots" then I also scan

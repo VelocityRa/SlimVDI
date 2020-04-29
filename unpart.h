@@ -11,7 +11,7 @@
 
 #include "fsys.h"
 
-HFSYS Unpart_OpenVolume(HVDDR hVDI, HUGE iLBA, HUGE cLBA, UINT cSectorSize);
+HFSYS Unpart_OpenVolume(HVDDR hVDI, HUGE_ iLBA, HUGE_ cLBA, UINT cSectorSize);
 /* Checks the source drive to see if unpartitioned regions account for a significant
  * portion of the disk (unpartitioned fragments of at least 1MB), in which case I can
  * treat that entire area as unused space when compacting (is this dangerous? does

@@ -55,13 +55,13 @@ CLASS(VDDR) vddr; // inherit the methods of the VDDR class.
 
 // and add the following additional methods
 
-int PUBLIC_METHOD(InsertSectors)(HCOW pThis, HUGE LBA, UINT nSectors);
+int PUBLIC_METHOD(InsertSectors)(HCOW pThis, HUGE_ LBA, UINT nSectors);
 /* Inserts nSectors additional unallocated sectors into the virtual drive
  * at the given LBA offset. This effectively increases the drive size.
  * Returns an error code, 0 = no error.
  */
 
-int PUBLIC_METHOD(MoveSectors)(HCOW pThis, HUGE LBA_from, HUGE LBA_to, UINT nSectors);
+int PUBLIC_METHOD(MoveSectors)(HCOW pThis, HUGE_ LBA_from, HUGE_ LBA_to, UINT nSectors);
 /* Moves nSectors sectors from one part of the virtual drive to another
  * part of the drive. No physical copying is done, we just adjust the
  * internal list of extents. This function will fail if the insertion point falls
@@ -69,7 +69,7 @@ int PUBLIC_METHOD(MoveSectors)(HCOW pThis, HUGE LBA_from, HUGE LBA_to, UINT nSec
  * Returns an error code, 0 = no error.
  */
 
-int PUBLIC_METHOD(WriteSectors)(HCOW pThis, void *buffer, HUGE LBA, UINT nSectors);
+int PUBLIC_METHOD(WriteSectors)(HCOW pThis, void *buffer, HUGE_ LBA, UINT nSectors);
 /* Writes (virtually) to the drive by copying affected blocks and writing to the copy.
  *
  * !WARNING! !WARNING! All large scale modifications (InsertSectors, MoveSectors) must

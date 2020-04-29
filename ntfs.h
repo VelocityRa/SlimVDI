@@ -11,12 +11,12 @@
 
 #include "fsys.h"
 
-BOOL NTFS_IsNTFSVolume(HVDDR hVDI, HUGE iLBA);
+bool NTFS_IsNTFSVolume(HVDDR hVDI, HUGE_ iLBA);
 /* Does quick check to find out if an NTFS partition starts at the given LBA.
  * Returns TRUE if so.
  */
 
-HFSYS NTFS_OpenVolume(HVDDR hVDI, HUGE iLBA, HUGE cLBA, UINT cSectorSize);
+HFSYS NTFS_OpenVolume(HVDDR hVDI, HUGE_ iLBA, HUGE_ cLBA, UINT cSectorSize);
 /* Attempts to open an NTFS volume (partition). The function returns a non-NULL handle if
  * the volume was successfully recognized as an NTFS volume.
  *

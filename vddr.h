@@ -38,7 +38,7 @@ typedef CLASS(VDDR) *HVDDR;
 
 // Global LastError variable. I hate global variables, but there's no good way to
 // get an error code from an object instance if object creation is what failed.
-UINT VDDR_LastError;
+extern UINT VDDR_LastError;
 
 UINT VDDR_GetLastError(void);
 /* All disk read functions set an error code to provide information on any
@@ -53,7 +53,7 @@ PSTR VDDR_GetErrorString(UINT nErr);
  * error (this will return a pointer to "Ok" if lasterror is 0).
  */
 
-BOOL VDDR_OpenMediaRegistry(CPFN fn);
+bool VDDR_OpenMediaRegistry(CPFN fn);
 /* fn is the absolute path to a hard disk image file. This function looks for a
  * file called "SlimVDI_Media.xml" in the same folder, and loads it into memory
  * if it exists (returning TRUE). This optional file allows SlimVDI to resolve
@@ -85,7 +85,7 @@ HVDDR VDDR_OpenByUUID(S_UUID *UUID, UINT iChain);
  * UUID into a filename).
  */
 
-BOOL VDDR_QuickGetUUID(CPFN fn, S_UUID *UUID);
+bool VDDR_QuickGetUUID(CPFN fn, S_UUID *UUID);
 /* This primitive function is used to get the creation UUID from a drive file in
  * the simplest way possible. This differs from the <object>::GetDriveUUID() method
  * in that the latter completely opens up the virtual drive, resolving snapshot
@@ -106,7 +106,7 @@ UINT PUBLIC_METHOD(GetDriveType)(HVDDR pThis);
 // are few reasons for the app to need to know the underlying source drive type, the only good one
 // being the "ShowHeader" diagnostic feature, which is of course format specific.
 
-BOOL PUBLIC_METHOD(GetDriveSize)(HVDDR pThis, HUGE *drive_size);
+bool PUBLIC_METHOD(GetDriveSize)(HVDDR pThis, HUGE_ *drive_size);
 // Returns (maximum) size in bytes of the virtual drive (note not the same as current allocated size).
 
 UINT PUBLIC_METHOD(GetDriveBlockCount)(HVDDR pThis, UINT SPBshift);
@@ -120,7 +120,7 @@ UINT PUBLIC_METHOD(GetDriveBlockCount)(HVDDR pThis, UINT SPBshift);
 // return a count of blocks actually used.
 //
 
-UINT PUBLIC_METHOD(BlockStatus)(HVDDR pThis, HUGE LBA_start, HUGE LBA_end);
+UINT PUBLIC_METHOD(BlockStatus)(HVDDR pThis, HUGE_ LBA_start, HUGE_ LBA_end);
 // This function is used to test the used/notused status of a block, the block being defined this time as
 // an INCLUSIVE logical block address (LBA) range, i.e. LBA_end should index the last LBA in the block,
 // not the first LBA of the next block. This function returns one of the VDDR_RSLT_xxxx codes, e.g.
@@ -130,13 +130,13 @@ UINT PUBLIC_METHOD(BlockStatus)(HVDDR pThis, HUGE LBA_start, HUGE LBA_end);
 // read should occur (out of range LBAs should return VDDR_RSLT_NOTALLOC).
 //
 
-BOOL PUBLIC_METHOD(GetDriveUUIDs)(HVDDR pThis, S_UUID *uuid, S_UUID *modifyUUID);
-BOOL PUBLIC_METHOD(GetParentUUIDs)(HVDDR pThis, S_UUID *parentUUID, S_UUID *parentModifyUUID);
+bool PUBLIC_METHOD(GetDriveUUIDs)(HVDDR pThis, S_UUID *uuid, S_UUID *modifyUUID);
+bool PUBLIC_METHOD(GetParentUUIDs)(HVDDR pThis, S_UUID *parentUUID, S_UUID *parentModifyUUID);
 
-BOOL PUBLIC_METHOD(GetDriveUUID)(HVDDR pThis, S_UUID *drvuuid);
+bool PUBLIC_METHOD(GetDriveUUID)(HVDDR pThis, S_UUID *drvuuid);
 // Gets the creation UUID of the virtual drive.
 
-BOOL PUBLIC_METHOD(IsSnapshot)(HVDDR pThis);
+bool PUBLIC_METHOD(IsSnapshot)(HVDDR pThis);
 // Returns TRUE if the virtual drive is a differencing type image dependant on some parent file.
 // Implementation note: SlimVDI will reject the source disk if this function returns TRUE, so if the
 // underlying VDDR object actually supports snapshots then this function should always return FALSE.
@@ -151,7 +151,7 @@ int PUBLIC_METHOD(ReadPage)(HVDDR pThis, void *buffer, UINT iPage, UINT SPBshift
 // in the source virtual disk format.
 //
 
-int PUBLIC_METHOD(ReadSectors)(HVDDR pThis, void *buffer, HUGE LBA, UINT nSectors);
+int PUBLIC_METHOD(ReadSectors)(HVDDR pThis, void *buffer, HUGE_ LBA, UINT nSectors);
 // When reading a page at a time proves cumbersome, this method can be used instead for
 // sector level reads. This function reads zero or more sectors from the drive using absolute
 // LBA addressing ("absolute" meaning that sector numbering is relative to the first sector
@@ -165,7 +165,7 @@ HVDDR PUBLIC_METHOD(Close)(HVDDR pThis);
 // pointer, i.e.  P = P->Close(P).
 //
 
-BOOL PUBLIC_METHOD(IsInheritedPage)(HVDDR pThis, UINT iPage);
+bool PUBLIC_METHOD(IsInheritedPage)(HVDDR pThis, UINT iPage);
 
 } /* End definition */ VDDR;
 
