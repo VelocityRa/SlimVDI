@@ -33,7 +33,7 @@ UINT VDIW_GetLastError(void);
  * the error code.
  */
 
-PSTR VDIW_GetErrorString(UINT nErr);
+const char* VDIW_GetErrorString(UINT nErr);
 /* This function can use to convert an error code into a readable
  * error string. Pass an error code returned by GetLastError(), or
  * pass nErr=0xFFFFFFFF to retrieve a text version of the last error

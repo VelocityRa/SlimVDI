@@ -46,18 +46,18 @@ typedef struct {
 } VHD_INFO, *PVHD;
 
 // localization strings
-static PSTR pszOK          /* = "Ok" */;
-static PSTR pszUNKERROR    /* = "Unknown Error" */;
-static PSTR pszVDNOEXIST   /* = "The source file does not exist" */;
-static PSTR pszVDERRSHARE  /* = "Source file already in use (is VirtualBox running?)" */;
-static PSTR pszVDERRREAD   /* = "Got OS error %lu when reading from source file" */;
-static PSTR pszVDNOTVHD    /* = "Source file is not a recognized VHD file format" */;
-static PSTR pszVDINVHANDLE /* = "Invalid handle passed to VDx source object" */;
-static PSTR pszVDNOMEM     /* = "Not enough memory to map source file" */;
-static PSTR pszVDSEEKRANGE /* = "App attempted to seek beyond end of drive!" */;
-static PSTR pszVDERRFMT    /* = "Source has strange format which is incompatible with this tool" */;
-static PSTR pszVDERRSEEK   /* = "Got OS error %lu when seeking inside source file" */;
-static PSTR pszVDBLKMAP    /* = "Source file corrupt - block map contains errors" */;
+static PSTR pszOK          = "Ok";
+static PSTR pszUNKERROR    = "Unknown Error";
+static PSTR pszVDNOEXIST   = "The source file does not exist";
+static PSTR pszVDERRSHARE  = "Source file already in use (is VirtualBox running?)";
+static PSTR pszVDERRREAD   = "Got OS error %lu when reading from source file";
+static PSTR pszVDNOTVHD    = "Source file is not a recognized VHD file format";
+static PSTR pszVDINVHANDLE = "Invalid handle passed to VDx source object";
+static PSTR pszVDNOMEM     = "Not enough memory to map source file";
+static PSTR pszVDSEEKRANGE = "App attempted to seek beyond end of drive!";
+static PSTR pszVDERRFMT    = "Source has strange format which is incompatible with this tool";
+static PSTR pszVDERRSEEK   = "Got OS error %lu when seeking inside source file";
+static PSTR pszVDBLKMAP    = "Source file corrupt - block map contains errors";
 
 /*.....................................................*/
 

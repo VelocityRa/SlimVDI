@@ -15,10 +15,10 @@
 
 #define VDI_SIGNATURE   (0xBEDA107F)
 
-extern PSTR pszVdiInfoSlimVDI /* = "<<< SlimVDI VirtualBox Disk Image >>>\n" */ ;
-extern PSTR pszVdiInfo         /* = "<<< Sun VirtualBox Disk Image >>>\n" */ ;
-extern PSTR pszVdiInfoAlt      /* = "<<< Sun xVM VirtualBox Disk Image >>>\n" */ ;
-extern PSTR pszVdiInfoInno     /* = "<<< innotek VirtualBox Disk Image >>>\n" */ ;
+extern const char* pszVdiInfoSlimVDI /* = "<<< SlimVDI VirtualBox Disk Image >>>\n" */ ;
+extern const char* pszVdiInfo         /* = "<<< Sun VirtualBox Disk Image >>>\n" */ ;
+extern const char* pszVdiInfoAlt      /* = "<<< Sun xVM VirtualBox Disk Image >>>\n" */ ;
+extern const char* pszVdiInfoInno     /* = "<<< innotek VirtualBox Disk Image >>>\n" */ ;
 
 // VDI image types
 #define VDI_TYPE_NORMAL  1  /* Normal, dynamically growing VDI */

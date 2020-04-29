@@ -52,24 +52,24 @@ typedef struct {
 static BYTE *Template_MBR; // binary data (RCDATA) loaded from resource file.
 
 // localization strings
-static PSTR pszOK          /* = "Ok" */;
-static PSTR pszUNKERROR    /* = "Unknown Error" */;
-static PSTR pszVDNOEXIST   /* = "The source file does not exist" */;
-static PSTR pszVDERRSHARE  /* = "Source file already in use (is VirtualBox running?)" */;
-static PSTR pszVDERRREAD   /* = "Got OS error %lu when reading from source file" */;
-static PSTR pszVDNOTVMDK   /* = "Source file is not a recognized VMDK file format" */;
-static PSTR pszVDINVHANDLE /* = "Invalid handle passed to VDx source object" */;
-static PSTR pszVDNOMEM     /* = "Not enough memory to map source file" */;
-static PSTR pszVDSEEKRANGE /* = "App attempted to seek beyond end of drive!" */;
-static PSTR pszVDERRFMT    /* = "Source has strange format which is incompatible with this tool" */;
-static PSTR pszVDERRSEEK   /* = "Got OS error %lu when seeking inside source file" */;
-static PSTR pszVDBLKMAP    /* = "Source file corrupt - block map contains errors" */;
-static PSTR pszVDNODESC    /* = "VMDK incomplete - disk descriptor not found" */;
-static PSTR pszVDINVDESC   /* = "Invalid VMDK disk descriptor" */;
-static PSTR pszVDBADVER    /* = "VMDK version number was not recognized" */;
-static PSTR pszVDMISSING   /* = "Required parameters are missing from the VMDK descriptor" */;
-static PSTR pszVDERRCOMP   /* = "Compressed VMDKs are not currently supported" */;
-static PSTR pszVDNOEXTENT  /* = "A descriptor referenced extent file is missing (renamed?)" */;
+static PSTR pszOK          = "Ok";
+static PSTR pszUNKERROR    = "Unknown Error";
+static PSTR pszVDNOEXIST   = "The source file does not exist";
+static PSTR pszVDERRSHARE  = "Source file already in use (is VirtualBox running?)";
+static PSTR pszVDERRREAD   = "Got OS error %lu when reading from source file";
+static PSTR pszVDNOTVMDK   = "Source file is not a recognized VMDK file format";
+static PSTR pszVDINVHANDLE = "Invalid handle passed to VDx source object";
+static PSTR pszVDNOMEM     = "Not enough memory to map source file";
+static PSTR pszVDSEEKRANGE = "App attempted to seek beyond end of drive!";
+static PSTR pszVDERRFMT    = "Source has strange format which is incompatible with this tool";
+static PSTR pszVDERRSEEK   = "Got OS error %lu when seeking inside source file";
+static PSTR pszVDBLKMAP    = "Source file corrupt - block map contains errors";
+static PSTR pszVDNODESC    = "VMDK incomplete - disk descriptor not found";
+static PSTR pszVDINVDESC   = "Invalid VMDK disk descriptor";
+static PSTR pszVDBADVER    = "VMDK version number was not recognized";
+static PSTR pszVDMISSING   = "Required parameters are missing from the VMDK descriptor";
+static PSTR pszVDERRCOMP   = "Compressed VMDKs are not currently supported";
+static PSTR pszVDNOEXTENT  = "A descriptor referenced extent file is missing (renamed?)";
 
 /*.....................................................*/
 

@@ -34,18 +34,18 @@ typedef struct {
 } VDIW_INFO, *PVDI;
 
 // localization strings
-static PSTR pszOK        /* = "Ok" */;
-static PSTR pszUNKERROR  /* = "Unknown Error" */;
-static PSTR pszVWERRPATH /* = "Destination path does not exist" */;
-static PSTR pszVWEXISTS  /* = "Destination file already exists" */;
-static PSTR pszVWNOSPACE /* = "Not enough free space on destination drive" */;
-static PSTR pszVWWRPROT  /* = "Dest drive is write protected" */;
-static PSTR pszVWACCDEN  /* = "Access to dest drive was denied" */;
-static PSTR pszVWNOMEM   /* = "Not enough memory" */;
-static PSTR pszVWWRERR   /* = "Drive write error" */;
-static PSTR pszVWBLOCK   /* = "Attempted block write past end of virtual disk" */;
-static PSTR pszVWEXISTSQ /* = "Destination already exists. Are you sure you want to overwrite it?" */;
-static PSTR pszVWEXISTSC /* = "File Exists" */;
+static auto pszOK        = "Ok";
+static auto pszUNKERROR  = "Unknown Error";
+static auto pszVWERRPATH = "Destination path does not exist";
+static auto pszVWEXISTS  = "Destination file already exists";
+static auto pszVWNOSPACE = "Not enough free space on destination drive";
+static auto pszVWWRPROT  = "Dest drive is write protected";
+static auto pszVWACCDEN  = "Access to dest drive was denied";
+static auto pszVWNOMEM   = "Not enough memory";
+static auto pszVWWRERR   = "Drive write error";
+static auto pszVWBLOCK   = "Attempted block write past end of virtual disk";
+static auto pszVWEXISTSQ = "Destination already exists. Are you sure you want to overwrite it?";
+static auto pszVWEXISTSC = "File Exists";
 
 /*.....................................................*/
 
@@ -70,10 +70,10 @@ VDIW_GetLastError(void)
 
 /*.....................................................*/
 
-PUBLIC PSTR
+PUBLIC const char*
 VDIW_GetErrorString(UINT nErr)
 {
-   PSTR pszErr;
+   const char* pszErr;
    if (nErr==0xFFFFFFFF) nErr = LastError;
    switch (nErr) {
       case VDIW_ERR_NONE:

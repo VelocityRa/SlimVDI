@@ -33,3 +33,5 @@ Debug/
 *.sdf
 *.opensdf
 Obj/
+
+out/

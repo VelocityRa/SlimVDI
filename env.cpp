@@ -171,7 +171,7 @@ Env_GetDriveSectors(HANDLE hDrive, UINT *DriveSectors)
 /*......................................................*/
 
 PUBLIC UI32
-Env_AskYN(PSTR szMsg, PSTR szCaption)
+Env_AskYN(const char* szMsg, const char* szCaption)
 {
    UI32 rslt = MessageBox(GetFocus(),szMsg,szCaption,MB_ICONSTOP|MB_YESNO);
    if (rslt==IDYES) return 1;

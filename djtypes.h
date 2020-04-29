@@ -131,7 +131,7 @@ typedef void *PVOID;
 typedef unsigned char BYTE;
 typedef BYTE *PBYTE;
 
-typedef CHAR *PSTR;
+typedef char *PSTR;
 
 // typedef UI32 bool;
 // typedef bool *PBOOL;

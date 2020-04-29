@@ -14,12 +14,12 @@
 #include "ids.h"
 #include "djstring.h"
 
-PUBLIC PSTR pszVdiInfo         = "<<< Sun VirtualBox Disk Image >>>\n";
-PUBLIC PSTR pszVdiInfoAlt      = "<<< Sun xVM VirtualBox Disk Image >>>\n";
-PUBLIC PSTR pszVdiInfoInno     = "<<< innotek VirtualBox Disk Image >>>\n";
-PUBLIC PSTR pszVdiInfoSlimVDI = "<<< SlimVDI VirtualBox Disk Image >>>\n";
-PUBLIC PSTR pszQemuVdiInfo     = "<<< QEMU VM Virtual Disk Image >>>\n";
-PUBLIC PSTR pszVdiInfoOracle   = "<<< Oracle VM VirtualBox Disk Image >>>\n";
+PUBLIC const char* pszVdiInfo         = "<<< Sun VirtualBox Disk Image >>>\n";
+PUBLIC const char* pszVdiInfoAlt      = "<<< Sun xVM VirtualBox Disk Image >>>\n";
+PUBLIC const char* pszVdiInfoInno     = "<<< innotek VirtualBox Disk Image >>>\n";
+PUBLIC const char* pszVdiInfoSlimVDI = "<<< SlimVDI VirtualBox Disk Image >>>\n";
+PUBLIC const char* pszQemuVdiInfo     = "<<< QEMU VM Virtual Disk Image >>>\n";
+PUBLIC const char* pszVdiInfoOracle   = "<<< Oracle VM VirtualBox Disk Image >>>\n";
 
 static UINT OSLastError;
 
@@ -35,18 +35,18 @@ typedef struct {
    UINT *blockmap;
 } VDI_INFO, *PVDI;
 
-static PSTR pszOK          /* = "Ok" */;
-static PSTR pszUNKERROR    /* = "Unknown Error" */;
-static PSTR pszVDNOEXIST   /* = "The source file does not exist" */;
-static PSTR pszVDERRSHARE  /* = "Source file already in use (is VirtualBox running?)" */;
-static PSTR pszVDERRREAD   /* = "Got OS error %lu when reading from source file" */;
-static PSTR pszVDNOTVDI    /* = "Source file is not a recognized VDI file format" */;
-static PSTR pszVDINVHANDLE /* = "Invalid handle passed to VDx source object" */;
-static PSTR pszVDNOMEM     /* = "Not enough memory to map source file" */;
-static PSTR pszVDSEEKRANGE /* = "App attempted to seek beyond end of drive!" */;
-static PSTR pszVDERRFMT    /* = "Source has strange format which is incompatible with this tool" */;
-static PSTR pszVDERRSEEK   /* = "Got OS error %lu when seeking inside source file" */;
-static PSTR pszVDBLKMAP    /* = "Source file corrupt - block map contains errors" */;
+static const char* pszOK =          "Ok";
+static const char* pszUNKERROR =    "Unknown Error";
+static const char* pszVDNOEXIST =   "The source file does not exist";
+static const char* pszVDERRSHARE =  "Source file already in use (is VirtualBox running?)";
+static const char* pszVDERRREAD =   "Got OS error %lu when reading from source file";
+static const char* pszVDNOTVDI =    "Source file is not a recognized VDI file format";
+static const char* pszVDINVHANDLE = "Invalid handle passed to VDx source object";
+static const char* pszVDNOMEM =     "Not enough memory to map source file";
+static const char* pszVDSEEKRANGE = "App attempted to seek beyond end of drive!";
+static const char* pszVDERRFMT =    "Source has strange format which is incompatible with this tool";
+static const char* pszVDERRSEEK =   "Got OS error %lu when seeking inside source file";
+static const char* pszVDBLKMAP =    "Source file corrupt - block map contains errors";
 
 /*.....................................................*/
 
@@ -74,10 +74,10 @@ VDIR_GetLastError(void)
 
 /*.....................................................*/
 
-PUBLIC PSTR
+PUBLIC const char*
 VDIR_GetErrorString(UINT nErr)
 {
-   PSTR pszErr;
+   const char* pszErr;
    static char sz[256];
    if (nErr==0xFFFFFFFF) nErr = VDDR_LastError;
    switch (nErr) {

@@ -35,10 +35,10 @@ VDDR_GetLastError(void)
 
 /*...........................................................................*/
 
-PUBLIC PSTR
+PUBLIC const char*
 VDDR_GetErrorString(UINT nErr)
 {
-   PSTR pszErr = RSTR(UNKERROR);
+   const char* pszErr = RSTR(UNKERROR);
    if (nErr==0xFFFFFFFF) nErr = VDDR_LastError;
    if (nErr==0) pszErr = RSTR(OK);
    else {

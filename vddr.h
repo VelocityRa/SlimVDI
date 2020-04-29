@@ -46,7 +46,7 @@ UINT VDDR_GetLastError(void);
  * directly.
  */
 
-PSTR VDDR_GetErrorString(UINT nErr);
+const char* VDDR_GetErrorString(UINT nErr);
 /* This function can be used to convert an error code into an a readable
  * error string. Pass an error code returned by GetLastError(), or
  * pass nErr=0xFFFFFFFF to retrieve a text description of the most recent

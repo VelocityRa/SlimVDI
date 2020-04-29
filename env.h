@@ -20,7 +20,7 @@ bool Env_GetDriveSectors(HANDLE hDrive, UINT *DriveSectors);
 // bool Env_Error(PSTR szErr);
 // Displays error message, always returns FALSE.
 
-UI32 Env_AskYN(PSTR szMsg, PSTR szCaption);
+UI32 Env_AskYN(const char* szMsg, const char* szCaption);
 UI32 Env_AskYNC(PSTR szMsg, PSTR szCaption);
 // Yes/No? and Yes/No/Cancel message boxes.
 // Returns 0=NO, 1=YES, 2=Cancel (latter only if cancel is allowed).
@@ -53,7 +53,8 @@ PSTR  Env_LoadString(PSTR *psz, UINT ids);
 // lookup once, on demand. Note that although strings in Win32 resources are stored in Unicode, I
 // convert them to ANSI before returning a pointer. This means that I only currently support ANSI
 // or multibyte encoded strings.
-#define RSTR(szid) Env_LoadString(&psz##szid,IDS_##szid)
+#define RSTR(szid) psz##szid
+// #define RSTR(szid) Env_LoadString(&psz##szid,IDS_##szid)
 // The RSTR macro provides a less verbose way to access localized strings, provided you keep
 // to certain naming conventions. I.e. if you have a string called STRING then a pointer to
 // that string has to be called pszSTRING and the numeric id has to be called IDS_STRING.
