@@ -16,6 +16,7 @@
 #include "partinfo.h"
 #include "env.h"
 #include "ids.h"
+#include <cstddef>
 
 #define DO_MBR_FIX        1
 
@@ -262,7 +263,7 @@ _try_again:
          }
       }
       if (!LastError) {
-         PVDI pVDI = Mem_Alloc(MEMF_ZEROINIT, sizeof(VDIW_INFO));
+         PVDI pVDI = (PVDI)Mem_Alloc(MEMF_ZEROINIT, sizeof(VDIW_INFO));
          String_Copy(pVDI->fn, fn, FN_MAX);
          pVDI->f = f;
          pVDI->BlockSizeShift = PowerOfTwo(BlockSize);
@@ -356,7 +357,7 @@ WriteHeader(PVDI pVDI)
    File_WrBin(pVDI->f, &pVDI->hdr, sizeof(VDI_HEADER));
 
    // alloc memory for the block map, then initialize it.
-   pVDI->blockmap = Mem_Alloc(0,pVDI->hdr.nBlocks*sizeof(UINT));
+   pVDI->blockmap = (UINT*)Mem_Alloc(0,pVDI->hdr.nBlocks*sizeof(UINT));
    for (i=0; i<pVDI->hdr.nBlocks; i++) pVDI->blockmap[i] = VDI_PAGE_FREE;
    WritePadding(pVDI, pVDI->hdr.offset_Blocks); // pad out to blockmap offset.
    File_WrBin(pVDI->f, pVDI->blockmap, pVDI->hdr.nBlocks*sizeof(UINT));
@@ -526,14 +527,14 @@ VDIW_WritePage(HVDIW hVDI, void *buffer, UINT iPage, bool bAllZero)
       if (iPage<pVDI->hdr.nBlocks) {
          LastError = 0;
          if (!pVDI->blockmap) {
-            if (iPage==0) SetAlignment(pVDI,buffer); // align boot partition on 4K VDI file boundary.
+            if (iPage==0) SetAlignment(pVDI,(BYTE*)buffer); // align boot partition on 4K VDI file boundary.
             WriteHeader(pVDI);
          }
          if (LastError==0) {
             if (!buffer) {
                LastError = 0;
             } else if (!VDI_BLOCK_ALLOCATED(pVDI->blockmap[iPage])) {
-               if (bAllZero || AllZero(buffer,pVDI->hdr.BlockSize)) {
+               if (bAllZero || AllZero((BYTE*)buffer,pVDI->hdr.BlockSize)) {
                   pVDI->blockmap[iPage] = VDI_PAGE_ZERO;
                } else {
                   // we need to allocate and write a new block.

@@ -60,7 +60,7 @@ VDDR_GetErrorString(UINT nErr)
          // case VDD_TYPE_COW:
          //    pszErr = COW_GetErrorString(nErr);
          //    break;
-		 default:
+         default:
             ;
       }
    }

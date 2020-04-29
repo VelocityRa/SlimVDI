@@ -21,11 +21,11 @@ set(NAMESPACE "slimvdi::")
 
 # Source files
 #set(LIB_SRC MediaReg.c Random.c cow.c djfile.c djstring.c env.c hddr.c)
-set(LIB_SRC vdir.cpp vddr.cpp mem.cpp djfile.cpp env.cpp djstring.cpp filename.cpp MediaReg.cpp memfile.cpp)
+set(LIB_SRC vdir.cpp vdiw.cpp vddr.cpp mem.cpp djfile.cpp env.cpp djstring.cpp filename.cpp MediaReg.cpp memfile.cpp)
 
 # Headers
 #set(LIB_INST_HEADERS MediaReg.h cow.h djfile.h djstring.h djtypes.h djwarning.h env.h hddr.h ids.h)
-set(LIB_INST_HEADERS vdir.h vddr.h vdistructs.h djtypes.h filename.h mem.h djfile.h env.h djstring.h filename.h MediaReg.h memfile.h djwarning.h)
+set(LIB_INST_HEADERS vdir.h vdiw.h vddr.h vdistructs.h djtypes.h filename.h mem.h djfile.h env.h djstring.h filename.h MediaReg.h memfile.h djwarning.h partinfo.h ids.h)
 
 add_library(${PROJECT_NAME} ${LIB_SRC})
 
